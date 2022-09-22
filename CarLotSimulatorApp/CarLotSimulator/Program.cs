@@ -1,33 +1,58 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
+using System.Xml;
+
 
 namespace CarLotSimulator
 {
     class Program
     {
-        static void Main(string[] args)
+
+        public static void Main(string[] args)
         {
-            //TODO
+            CarLot carLot = new CarLot();
 
-            //Create a seperate class file called Car
-            //Car shall have the following properties: Year, Make, Model, EngineNoise, HonkNoise, IsDriveable
-            //Car shall have the following methods: MakeEngineNoise(), MakeHonkNoise()
-            //The methods should take one string parameter: the respective noise property
+            Car mGBGT = new Car()
+            {
+                Year = 1974,
+                Make = "MG",
+                Model = "BGT",
+                EngineNoise = "zoomzoom",
+                HonkNoise = "Beepskies",
+                IsDriveable = true,
+            };
+            Console.WriteLine(mGBGT.MakeEngineNoise(mGBGT.EngineNoise));
+            Console.WriteLine(mGBGT.MakeHonkNoise(mGBGT.HonkNoise));
+            Console.WriteLine();
+
+            Car viperGTS = new Car();
+            viperGTS.Year = 2001;
+            viperGTS.Make = "Dodge";
+            viperGTS.Model = "Viper GTS";
+            viperGTS.EngineNoise = "Groooowwwwl";
+            viperGTS.HonkNoise = "Beep";
+            viperGTS.IsDriveable = true;
+            Console.WriteLine(viperGTS.MakeEngineNoise(viperGTS.EngineNoise));
+            Console.WriteLine(viperGTS.MakeHonkNoise(viperGTS.HonkNoise));
+            Console.WriteLine();
+                        
+
+            Car rover = new Car(1964, "Land Rover", "Series IIA", "Vroom", "Honk", false);
+            Console.WriteLine(rover.MakeEngineNoise(rover.EngineNoise));
+            Console.WriteLine(rover.MakeHonkNoise(rover.HonkNoise));
+            Console.WriteLine();
 
 
-            //Now that the Car class is created we can instanciate 3 new cars
-            //Set the properties for each of the cars
-            //Call each of the methods for each car
+            carLot.CarList.Add(mGBGT);
+            carLot.CarList.Add(viperGTS);
+            carLot.CarList.Add(rover);
 
-            //*************BONUS*************//
 
-            // Set the properties utilizing the 3 different ways we learned about, one way for each car
+            foreach (var Car in carLot.CarList)
+            {
+                Console.WriteLine($"{Car.Year}, {Car.Make}, {Car.Model}, {Car.EngineNoise}, {Car.HonkNoise}, {Car.IsDriveable}\n");
+            }
 
-            //*************BONUS X 2*************//
-
-            //Create a CarLot class
-            //It should have at least one property: a List of cars
-            //Instanciate the a Carlot at the beginning of the program and as you create a car add the car to the list.
-            //At the end iterate through the list printing each of car's Year, Make, and Model to the console
         }
     }
 }
