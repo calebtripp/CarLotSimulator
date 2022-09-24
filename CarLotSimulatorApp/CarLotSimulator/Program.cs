@@ -43,14 +43,21 @@ namespace CarLotSimulator
             Console.WriteLine();
 
 
+            Car jelloCar = new Car(2022, "Peepster Inc", "Jjype", "Jiggle jiggle jiggle jiggle, wobble wobble wobble wobble", "florm badung dung dung",true);
+
+            Car ssLucky = new Car(1952, "Ham Hoke", "Bug Type", "bizz bizzz bizzzzz", "nerf", true);
+
             carLot.CarList.Add(mGBGT);
             carLot.CarList.Add(viperGTS);
             carLot.CarList.Add(rover);
+            carLot.CarList.Add(jelloCar);
+            carLot.CarList.Add(ssLucky);
+           
 
 
             foreach (var Car in carLot.CarList)
             {
-                Console.WriteLine($"{Car.Year}, {Car.Make}, {Car.Model}, {Car.EngineNoise}, {Car.HonkNoise}, {Car.IsDriveable}\n");
+                Console.WriteLine($" Year: {Car.Year}\n Make: {Car.Make}\n Model: {Car.Model}\n Engine Noise: {Car.EngineNoise}\n Honk Noise: {Car.HonkNoise}\n Driveable?: {Car.IsDriveable}\n");
             }
 
         }
